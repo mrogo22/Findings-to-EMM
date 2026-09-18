@@ -382,7 +382,7 @@ class AUCQFNumeric(ps.BoundedInterestingnessMeasure):
         statistics = self.ensure_statistics(subgroup, target, data, statistics)
         if not self._coverage_ok(statistics.size_sg):
             return 0.0
-        return statistics.size_sg**self.a * self._directed_deviation(statistics.auc)
+        return (statistics.size_sg/self.dataset_size)**self.a * self._directed_deviation(statistics.auc)
 
     def optimistic_estimate(self, subgroup, target, data, statistics=None):
         """Return the cached optimistic estimate (loose but admissible)."""
